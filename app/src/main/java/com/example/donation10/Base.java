@@ -73,7 +73,12 @@ public class Base extends AppCompatActivity {
     {
         startActivity (new Intent(this, MainActivity.class));
     }
-    public void reset(MenuItem item) {}
+    public void reset(MenuItem item) {
+        app.dbManager.reset();
+        app.totalDonated = 0;
+        TextView amountTotal = (TextView) findViewById(R.id.totalSoFar);
+        amountTotal.setText("$" + app.totalDonated);
+    }
 }
 /*
 public class Base extends AppCompatActivity {

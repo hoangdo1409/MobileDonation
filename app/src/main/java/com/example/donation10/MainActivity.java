@@ -1,7 +1,7 @@
 package com.example.donation10;
 /**
  * Author: Hoàng Văn Đô 19020251
- * Thực hành mobile: Bài 10
+ * Thực hành mobile: Bài 11
  */
 
 import androidx.appcompat.app.AppCompatActivity;
