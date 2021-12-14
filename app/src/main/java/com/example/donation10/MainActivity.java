@@ -1,7 +1,7 @@
 package com.example.donation10;
 /**
  * Author: Hoàng Văn Đô 19020251
- * Thực hành mobile: Bài 6
+ * Thực hành mobile: Bài 7
  */
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Base {
 
     private Button donateButton;
     private RadioGroup paymentMethod;
