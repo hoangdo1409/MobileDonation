@@ -1,7 +1,7 @@
 package com.example.donation10;
 /**
  * Author: Hoàng Văn Đô 19020251
- * Thực hành mobile: Bài 9
+ * Thực hành mobile: Bài 10
  */
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +33,7 @@ public class MainActivity extends Base {
     private NumberPicker amountPicker;
     private EditText amountText;
     private TextView amountTotal;
-    public int totalDonated = 1000;
+    public int totalDonated = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +76,7 @@ public class MainActivity extends Base {
         }
         if (donatedAmount > 0)
         {
-            newDonation(new Donation(donatedAmount, method));
+            app.newDonation(new Donation(donatedAmount, method));
             progressBar.setProgress(totalDonated);
             String s = String.valueOf(totalDonated);
             String totalDonatedStr = "$" + s;
