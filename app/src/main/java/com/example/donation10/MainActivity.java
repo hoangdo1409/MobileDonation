@@ -1,13 +1,15 @@
 package com.example.donation10;
 /**
  * Author: Hoàng Văn Đô 19020251
- * Thực hành mobile: Bài 3
+ * Thực hành mobile: Bài 4
  */
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup paymentMethod;
     private ProgressBar progressBar;
     private NumberPicker amountPicker;
+    private int totalDonated = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +53,37 @@ public class MainActivity extends AppCompatActivity {
 
         amountPicker.setMinValue(0);
         amountPicker.setMaxValue(1000);
+        progressBar.setMax(10000);
     }
 
-    public void donateButtonPressed(View view)
-    {
-        Log.v("Donate", "Donate Pressed!");
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void donateButtonPressed(View view) {
+        totalDonated = totalDonated + amountPicker.getValue();
+        String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ?
+                "PayPal" : "Direct";
+        progressBar.setProgress(totalDonated);
+        Log.v("Donate", amountPicker.getValue() + " donated by " + method
+                + "\nCurrent total " + totalDonated);
+    }
+
 }
