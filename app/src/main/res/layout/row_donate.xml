@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -10,7 +11,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="20dp"
-        android:text="@string/defaultAmount" />
+        android:text="@string/defaultAmount"
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/row_method"
         android:layout_width="wrap_content"
@@ -18,5 +20,6 @@
         android:layout_marginLeft="106dp"
         android:text="@string/defaultMethod"
         android:layout_alignTop="@+id/row_amount"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:ignore="RtlHardcoded" />
 </RelativeLayout>

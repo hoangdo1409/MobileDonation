@@ -41,8 +41,16 @@ public class Base extends AppCompatActivity {
         MenuItem report = menu.findItem(R.id.menuReport);
         MenuItem donate = menu.findItem(R.id.menuDonate);
         report.setEnabled(!donations.isEmpty());
-        report.setVisible(false);
-        donate.setVisible(true);
+        if(this instanceof MainActivity){
+            donate.setVisible(false);
+            if(!donations.isEmpty())
+                report.setVisible(true);
+        }
+        else {
+            report.setVisible(false);
+            donate.setVisible(true);
+        }
+
         return true;
     }
     public void settings(MenuItem item)
