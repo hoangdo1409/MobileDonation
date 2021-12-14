@@ -21,13 +21,12 @@ class DonationAdapter extends ArrayAdapter<Donation> {
         this.context = context;
         this.donations = donations;
     }
-    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        @SuppressLint("ViewHolder") View view = inflater.inflate(R.layout.row_donate, parent, false);
+        View view = inflater.inflate(R.layout.row_donate, parent, false);
         Donation donation = donations.get(position);
         TextView amountView = (TextView) view.findViewById(R.id.row_amount);
         TextView methodView = (TextView) view.findViewById(R.id.row_method);

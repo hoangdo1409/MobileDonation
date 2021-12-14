@@ -53,10 +53,7 @@ public class Base extends AppCompatActivity {
 
         return true;
     }
-    public void settings(MenuItem item)
-    {
-        Toast.makeText(this, "Settings Selected", Toast.LENGTH_SHORT).show();
-    }
+
     public void report(MenuItem item)
     {
         startActivity (new Intent(this, ActivityReport.class));
@@ -65,4 +62,6 @@ public class Base extends AppCompatActivity {
     {
         startActivity (new Intent(this, MainActivity.class));
     }
+
+    public void reset(MenuItem item) {}
 }
