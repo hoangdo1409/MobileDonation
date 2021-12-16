@@ -1,3 +1,4 @@
+/*
 package com.example.database;
 
 import android.content.ContentValues;
@@ -71,3 +72,4 @@ public class DBManager {
         database.delete("donations", null, null);
     }
 }
+ */

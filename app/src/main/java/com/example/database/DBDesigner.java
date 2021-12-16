@@ -1,4 +1,4 @@
-package com.example.database;
+/*package com.example.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -32,3 +32,5 @@ public class DBDesigner extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
+
+ */
