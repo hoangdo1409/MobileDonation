@@ -15,9 +15,7 @@ public class DonationApp extends Application
     public final int target = 10000;
     public int totalDonated = 0;
 
-    //public DBManager dbManager;
-
-    public List<Donation> donations = new ArrayList<Donation>();
+    public List <Donation> donations = new ArrayList<Donation>();
     public boolean newDonation(Donation donation)
     {
         boolean targetAchieved = totalDonated > target;

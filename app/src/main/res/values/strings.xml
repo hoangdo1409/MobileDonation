@@ -13,6 +13,6 @@
     <string name="defaultMethod">N/A</string>
     <string name="amount">Amount</string>
     <string name="total">Total So Far</string>
-    <string name="totalSoFar">$Total</string>
+    <string name="totalSoFar">$ Total</string>
     <string name="menuReset">Reset</string>
 </resources>

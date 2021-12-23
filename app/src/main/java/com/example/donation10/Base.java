@@ -28,11 +28,21 @@ public class Base extends AppCompatActivity {
         app = (DonationApp) getApplication();
     }
 
-    public boolean newDonation(Donation donation)
-    {
+    //new
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    public boolean newDonation(Donation donation) {
         boolean targetAchieved = totalDonated > target;
-        if (!targetAchieved)
-        {
+        if (!targetAchieved) {
             donations.add(donation);
             totalDonated += donation.amount;
         } else {
@@ -41,35 +51,27 @@ public class Base extends AppCompatActivity {
         }
         return targetAchieved;
     }
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-    @Override
-    public boolean onPrepareOptionsMenu (Menu menu){
+    public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         MenuItem report = menu.findItem(R.id.menuReport);
         MenuItem donate = menu.findItem(R.id.menuDonate);
         MenuItem reset = menu.findItem(R.id.menuReset);
 
-        if(app.donations.isEmpty()){
+        if (app.donations.isEmpty()) {
             report.setEnabled(false);
             reset.setEnabled(false);
-        } else{
+        } else {
             report.setEnabled(true);
             reset.setEnabled(true);
         }
 
-        if(this instanceof MainActivity){
+        if (this instanceof MainActivity) {
             donate.setVisible(false);
-            if(!app.donations.isEmpty())
-            {
                 report.setVisible(true);
                 reset.setEnabled(true);
-            }
-        } else{
+        } else {
             report.setVisible(false);
             donate.setVisible(true);
             reset.setVisible(false);
@@ -79,11 +81,12 @@ public class Base extends AppCompatActivity {
         return true;
     }
 
-    public void report(MenuItem item){
-        startActivity (new Intent(this, ActivityReport.class));
+    public void report(MenuItem item) {
+        startActivity(new Intent(this, ActivityReport.class));
     }
-    public void donate(MenuItem item){
-        startActivity (new Intent(this, MainActivity.class));
+
+    public void donate(MenuItem item) {
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     public void reset(MenuItem item) {
@@ -93,70 +96,3 @@ public class Base extends AppCompatActivity {
     }
 }
 
-/*
-public class Base extends AppCompatActivity {
-    public DonationApp app;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        app = (DonationApp) getApplication();
-        app.dbManager.open();
-        app.dbManager.setTotalDonated(this);
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        app.dbManager.close();
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-    @Override
-    public boolean onPrepareOptionsMenu (Menu menu){
-        super.onPrepareOptionsMenu(menu);
-        MenuItem report = menu.findItem(R.id.menuReport);
-        MenuItem donate = menu.findItem(R.id.menuDonate);
-        MenuItem reset = menu.findItem(R.id.menuReset);
-        if(app.dbManager.getAll().isEmpty())
-        {
-            report.setEnabled(false);
-            reset.setEnabled(false);
-        }
-        else {
-            report.setEnabled(true);
-            reset.setEnabled(true);
-        }
-        if(this instanceof MainActivity){
-            donate.setVisible(false);
-            if(!app.dbManager.getAll().isEmpty())
-            {
-                report.setVisible(true);
-                reset.setEnabled(true);
-            }
-        }
-        else {
-            report.setVisible(false);
-            donate.setVisible(true);
-            reset.setVisible(false);
-        }
-        return true;
-    }
-    public void report(MenuItem item)
-    {
-        startActivity (new Intent(this, ActivityReport.class));
-    }
-    public void donate(MenuItem item)
-    {
-        startActivity (new Intent(this, MainActivity.class));
-    }
-    public void reset(MenuItem item) {
-        app.dbManager.reset();
-        app.totalDonated = 0;
-        TextView amountTotal = (TextView) findViewById(R.id.totalSoFar);
-        amountTotal.setText("$" + app.totalDonated);
-    }
-}
-*/
